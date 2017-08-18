@@ -4,7 +4,17 @@
              x:Class="JJOOxamarinForms.Olimpiadas">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+            <ListView x:Name="ListOlimpiadas"
+             GroupDisplayBinding="{Binding Title}"
+             GroupShortNameBinding="{Binding ShortName}"
+             IsGroupingEnabled="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Lista Olimpiadas}"
+                            TextColor="#f35e20" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
