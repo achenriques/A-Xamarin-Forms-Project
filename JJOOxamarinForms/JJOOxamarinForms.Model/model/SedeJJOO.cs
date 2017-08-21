@@ -9,6 +9,7 @@ namespace JJOOxamarinForms.Model.model
         public int sede { get; private set; }
         public String ciudad { get; private set; }
         public String epoca { get; private set; }
+        public String to_string { get; }
 
         public SedeJJOO(int ano, int sede, String ciudad, int id_tipo_jjoo, String epoca)
         {
@@ -17,6 +18,7 @@ namespace JJOOxamarinForms.Model.model
             this.ciudad = ciudad;
             this.id_tipo_jjoo = id_tipo_jjoo;
             this.epoca = epoca;
+            this.to_string = ToString();
         }
 
         public override String ToString()

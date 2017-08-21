@@ -1,20 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JJOOxamarinForms.Olimpiadas">
+             x:Class="JJOOxamarinForms.Olimpiadas"
+             Title="Olimpiadas" >
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListOlimpiadas"
-             GroupDisplayBinding="{Binding Title}"
-             GroupShortNameBinding="{Binding ShortName}"
-             IsGroupingEnabled="true">
+            <Label x:Name="Header" />
+            <ListView x:Name="ListOlimpiadas">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Lista Olimpiadas}"
-                            TextColor="#f35e20" />
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding to_string}" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button x:Name="BtSedes" Text="Sedes Crud" />
+            <Button x:Name="BtWeb" Text="WebView" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -17,7 +17,6 @@ namespace JJOOxamarinForms
     {
         private WebPetition wp;
         private List<Olimpiada> olimp;
-        private String[] toShow;
 
         public Olimpiadas()
         {
@@ -30,16 +29,30 @@ namespace JJOOxamarinForms
         {
             olimp = await wp.GetOlimpiadas();
 
-            toShow = new String[olimp.Count];
+            Header.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+            Header.VerticalOptions = LayoutOptions.Center;
+            Header.HorizontalOptions = LayoutOptions.Center;
+            ListOlimpiadas.VerticalOptions = LayoutOptions.FillAndExpand;
+            ListOlimpiadas.HorizontalOptions = LayoutOptions.FillAndExpand;
+            BtSedes.Clicked += OnButtonClicked;
+            BtWeb.Clicked += OnButtonWebClicked;
 
-            for (int i = 0; i < olimp.Count; i++)
+            if (olimp.Count != 0)
             {
-                toShow[i] = olimp[i].ToString();
+                ListOlimpiadas.ItemsSource = olimp;
             }
-
-            ListOlimpiadas.ItemsSource = toShow;
+            else
+                Header.Text = "Ha ocurrido un error. No se ha podido cargar la lista de olimpiadas";
         }
 
+        async void OnButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Sedes());
+        }
 
+        async void OnButtonWebClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WebViewer());
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace JJOOxamarinForms.Model.model
         public int valor { get; private set; }
         public int n_veces_sede { get; private set; }
         public String tipo { get; private set; }
+        public String to_string { get; }
 
         public Olimpiada(int id_pais, String nombre_ciudad, int id_ciudad, String nombre_pais, int valor, int n_veces_sede, String tipo)
         {
@@ -22,6 +23,7 @@ namespace JJOOxamarinForms.Model.model
             this.valor = valor;
             this.n_veces_sede = n_veces_sede;
             this.tipo = tipo;
+            this.to_string = this.ToString();
         }
 
         public override String ToString()
@@ -31,12 +33,12 @@ namespace JJOOxamarinForms.Model.model
             if (n_veces_sede == 0)
             {
                 toret = ("País: " + this.nombre_pais + ", con ID " + id_pais + ", en la ciudad de " + this.nombre_ciudad +
-                        " con valor " + this.valor + ", nunca ha sido sede.");
+                        " \n con valor " + this.valor + ", nunca ha sido sede.");
             }
             else
             {
                 toret = ("País: " + this.nombre_pais + ", con ID " + this.id_pais + ", en la ciudad de " + this.nombre_ciudad +
-                    " con valor " + this.valor + ", ha sido sede " + this.n_veces_sede + " en " + this.tipo + ".");
+                    " \n con valor " + this.valor + ", ha sido sede " + this.n_veces_sede + " en " + this.tipo + ".");
             }
             return toret;
         }

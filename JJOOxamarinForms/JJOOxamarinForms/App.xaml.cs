@@ -7,7 +7,7 @@ namespace JJOOxamarinForms
         public App()
         {
             InitializeComponent();
-            MainPage = new Olimpiadas();
+            MainPage = MainPage = new NavigationPage(new Olimpiadas());
         }
 
         protected override void OnStart()

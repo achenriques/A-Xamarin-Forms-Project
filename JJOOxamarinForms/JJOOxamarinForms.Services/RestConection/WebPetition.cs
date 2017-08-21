@@ -56,5 +56,25 @@ namespace JJOOxamarinForms.Services.RestConection
 
             return toret;
         }
+
+        public async Task<Boolean> DeleteSede(String ano)
+        {
+            String url = "http://172.26.80.77:8080/sedes/"+ ano + "/";
+            var uri = new Uri(url);
+
+            HttpRequestMessage request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Delete,
+                RequestUri = uri
+            };
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

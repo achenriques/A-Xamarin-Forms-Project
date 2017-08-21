@@ -42,6 +42,12 @@
       <DependentUpon>Olimpiadas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sedes.xaml.cs">
+      <DependentUpon>Sedes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebViewer.xaml.cs">
+      <DependentUpon>WebViewer.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -75,6 +81,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Olimpiadas.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sedes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebViewer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
