@@ -11,6 +11,12 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="OnModify" CommandParameter="{Binding .}"
+                                        Text="Moify" />
+                                    <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+                                        Text="Delete" IsDestructive="True" />
+                                </ViewCell.ContextActions>
                                 <ViewCell.View>
                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                         <Label Text="{Binding to_string}" HorizontalOptions="FillAndExpand" />
@@ -21,6 +27,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button x:Name="BtNew" Text="Nueva Sede" />
+                <Label x:Name="Try" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

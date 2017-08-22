@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JJOOxamarinForms.ModifySede">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="HeaderNew" Text="Modificar Sede" BackgroundColor="Green" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                <Label Text="Año: " />
+                <Entry x:Name="An"/>
+                <Label Text="" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                <Label Text="Selecciona una ciudad: " />
+                <Entry x:Name="Ciudad" />
+                <Label Text="" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                <Label Text="Selecciona una época: " />
+                <Picker x:Name="Epocas" Title="Selecciona epoca"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <Button x:Name="BtModifica" Text="Crear" Clicked="OnButtonModify" />
+                <Button x:Name="BtCancela" Text="Cancelar" Clicked="OnButtonCanceled" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -37,7 +37,7 @@ namespace JJOOxamarinForms
             BtSedes.Clicked += OnButtonClicked;
             BtWeb.Clicked += OnButtonWebClicked;
 
-            if (olimp.Count != 0)
+            if (olimp != null)
             {
                 ListOlimpiadas.ItemsSource = olimp;
             }

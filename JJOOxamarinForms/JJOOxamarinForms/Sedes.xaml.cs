@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 
 using JJOOxamarinForms.Services.RestConection;
 using JJOOxamarinForms.Model.model;
+using System.Diagnostics;
 
 namespace JJOOxamarinForms
 {
@@ -17,7 +18,6 @@ namespace JJOOxamarinForms
     {
         private WebPetition wp;
         private List<SedeJJOO> sed;
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public Sedes()
         {
@@ -30,26 +30,33 @@ namespace JJOOxamarinForms
         {
             sed = await wp.GetSedes();
 
-            HeaderSedes.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
-            HeaderSedes.VerticalOptions = LayoutOptions.Center;
-            HeaderSedes.HorizontalOptions = LayoutOptions.Center;
-            ListSedes.VerticalOptions = LayoutOptions.FillAndExpand;
-            ListSedes.HorizontalOptions = LayoutOptions.FillAndExpand;
-            ListSedes.RowHeight = 40;
-            //Todo ListSelect
-            ListSedes.ItemSelected += async (sender, e) => {
-                bool ansawer = await DisplayAlert("¡Cuidado!", "¿ Estas seguro de eliminar: " + e.SelectedItem + " ?.", "Yes", "No");
-                if (ansawer)
+            if (sed != null)
+            {
+                HeaderSedes.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+                HeaderSedes.VerticalOptions = LayoutOptions.Center;
+                HeaderSedes.HorizontalOptions = LayoutOptions.Center;
+                ListSedes.VerticalOptions = LayoutOptions.FillAndExpand;
+                ListSedes.HorizontalOptions = LayoutOptions.FillAndExpand;
+                ListSedes.RowHeight = 40;
+                /*
+                ListSedes.ItemSelected += async (sender, e) =>
                 {
-                    if(await wp.DeleteSede("2"))
+                    bool ansawer = await DisplayAlert("¡Cuidado!", "¿ Estas seguro de eliminar: " + e.SelectedItem + " ?.", "Yes", "No");
+                    if (ansawer)
                     {
-                        sed = await wp.GetSedes();
-                        ListSedes.ItemsSource = sed;
+                        if(await wp.DeleteSede(((SedeJJOO)e.SelectedItem).ano))
+                        {
+                            sed = await wp.GetSedes();
+                            ListSedes.ItemsSource = sed;
+                        }
                     }
-                }
-
-            };
-            BtNew.Clicked += OnButtonClicked;
+                };
+                */
+            }
+            else
+                HeaderSedes.Text = "Ha ocurrido un error. No se ha podido cargar la lista de sedes";
+            
+            BtNew.Clicked += OnButtonNewClicked;
 
             if (sed.Count != 0)
             {
@@ -59,14 +66,39 @@ namespace JJOOxamarinForms
                 HeaderSedes.Text = "Ha ocurrido un error. No se ha podido cargar la lista de olimpiadas";
         }
 
-        async void OnButtonClicked(object sender, EventArgs e)
+        async void OnButtonNewClicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new Sedes());
+            await Navigation.PushModalAsync (new NewSede());
         }
 
-        /*async void OnPreviousPageButtonClicked(object sender, EventArgs e)
+        async void OnDelete(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
-        }*/
+            var mi = ((MenuItem)sender).CommandParameter;
+
+            bool ansawer = await DisplayAlert("¡Cuidado!", "¿ Estas seguro de eliminar: " + (SedeJJOO)mi + " ?.", "Yes", "No");
+            if (ansawer)
+            {
+                if (await wp.DeleteSede(((SedeJJOO) mi).ano))
+                {
+                    sed = await wp.GetSedes();
+                    ListSedes.ItemsSource = sed;
+                }
+            }
+        }
+
+        async void OnModify(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender).CommandParameter;
+
+            await Navigation.PushModalAsync(new ModifySede(((SedeJJOO)mi)));
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            sed = await wp.GetSedes();
+            ListSedes.ItemsSource = sed;
+        }
+
     }
 }

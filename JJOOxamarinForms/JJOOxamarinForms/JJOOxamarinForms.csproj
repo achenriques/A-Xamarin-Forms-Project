@@ -38,6 +38,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModifySede.xaml.cs">
+      <DependentUpon>ModifySede.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewSede.xaml.cs">
+      <DependentUpon>NewSede.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Olimpiadas.xaml.cs">
       <DependentUpon>Olimpiadas.xaml</DependentUpon>
     </Compile>
@@ -93,6 +99,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WebViewer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NewSede.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ModifySede.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
