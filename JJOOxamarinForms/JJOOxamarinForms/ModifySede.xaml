@@ -4,24 +4,24 @@
              x:Class="JJOOxamarinForms.ModifySede">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="HeaderNew" Text="Modificar Sede" BackgroundColor="Green" FontSize="Medium" />
+            <Label x:Name="HeaderModif" Text="Modificar Sede" BackgroundColor="#2196F3" FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"/>
             <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                 <Label Text="Año: " />
-                <Entry x:Name="An"/>
+                <Entry x:Name="Anyo" HorizontalOptions="FillAndExpand" Keyboard="Numeric"/>
                 <Label Text="" />
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                 <Label Text="Selecciona una ciudad: " />
-                <Entry x:Name="Ciudad" />
+                <Entry x:Name="Ciud" IsEnabled="False" HorizontalOptions="FillAndExpand"/>
                 <Label Text="" />
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                 <Label Text="Selecciona una época: " />
-                <Picker x:Name="Epocas" Title="Selecciona epoca"/>
+                <Picker x:Name="Epoc" Title="Selecciona epoca" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                <Button x:Name="BtModifica" Text="Crear" Clicked="OnButtonModify" />
-                <Button x:Name="BtCancela" Text="Cancelar" Clicked="OnButtonCanceled" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                <Button x:Name="BtModifica" Text="Crear" Clicked="OnButtonModify" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="BtCancela" Text="Cancelar" Clicked="OnButtonCanceled" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -21,27 +21,27 @@ namespace JJOOxamarinForms
 
         public ModifySede(SedeJJOO s)
         {
-            Debug.WriteLine(s.to_string);
-            Debug.WriteLine("ENTRO MODIFY SEDE");
             sede = s;
             anoViejo = s.ano;
-            SetProperties(s.id_tipo_jjoo);
             InitializeComponent();
+            SetProperties();     
         }
 
-        private void SetProperties(int i)
+        private void SetProperties()
         {
-            Debug.WriteLine("ENTRO MODIFY PROPERTIES");
             String[] ep = { "INVIERNO", "VERANO" };
-            Debug.WriteLine("ENTRO MODIFY PROPERTIESX");
-            An.Text = sede.ano.ToString();
-            Debug.WriteLine("ENTRO MODIFY PROPERTIES2");
-            Ciudad.Text = sede.ciudad;
-            Debug.WriteLine("ENTRO MODIFY PROPERTIES3");
-            Epocas.ItemsSource = ep;
-            Debug.WriteLine("ENTRO MODIFY PROPERTIES4");
-            Epocas.SelectedIndex = (i - 1);
-            Debug.WriteLine("ENTRO MODIFY PROPERTIES5");
+            try
+            {
+                Anyo.Text = sede.ano.ToString();
+                Ciud.Text = sede.ciudad;
+                Epoc.ItemsSource = ep;
+                Epoc.SelectedIndex = (sede.id_tipo_jjoo - 1);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+
         }
 
         private async void OnButtonCanceled(object sender, EventArgs e)
@@ -53,20 +53,20 @@ namespace JJOOxamarinForms
         {
             int ep = -1;
 
-            if (Epocas.SelectedIndex >= 0)
-                ep = Epocas.SelectedIndex + 1;
+            if (Epoc.SelectedIndex >= 0)
+                ep = Epoc.SelectedIndex + 1;
 
             int a = -1;
-            if (int.TryParse(An.Text, out a))
+            if (int.TryParse(Anyo.Text, out a))
             {
                 if (a < 0 || a > 2500)
                 {
                     await DisplayAlert("Datos incorrectos", "Introduzca un año entre 0 y 2050", null, "Entendido");
-                    An.Text = "";
+                    Anyo.Text = "";
                 }
                 else
                 {
-                    if (An.Text == "" || ep < 0)
+                    if (Anyo.Text == "" || ep < 0)
                     {
                         await DisplayAlert("Datos incorrectos", "Cubra todos los campos correctamente", null, "Entendido");
                     }
@@ -74,7 +74,7 @@ namespace JJOOxamarinForms
                     {
                         WebPetition wp = new WebPetition();
 
-                        if (await wp.ModifySede(a, anoViejo, ep))
+                        if (await wp.ModifySede(anoViejo, a, ep))
                         {
                             await DisplayAlert("Nueva entrada", "Modificación correcta", null, "Ok");
                             await Navigation.PopModalAsync();
@@ -89,7 +89,7 @@ namespace JJOOxamarinForms
             else
             {
                 await DisplayAlert("Año no admitido", "Introduzca un año entre 0 y 2050", null, "Entendido");
-                An.Text = "";
+                Anyo.Text = anoViejo.ToString();
             }
         }
     }

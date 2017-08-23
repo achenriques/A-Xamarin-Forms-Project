@@ -8,11 +8,16 @@ using System.Net.Http;
 
 //Using of models
 using JJOOxamarinForms.Model.model;
+using System.Diagnostics;
 
 namespace JJOOxamarinForms.Services.RestConection
 {
     public class WebPetition
     {
+        const String olimpUrl = "http://172.26.80.77:8080/olimpiadas/";
+        const String sedesUrl = "http://172.26.80.77:8080/sedes/";
+        const String ciudadesUrl = "http://172.26.80.77:8080/paises/";
+
         HttpClient client;
 
         public WebPetition()
@@ -43,8 +48,7 @@ namespace JJOOxamarinForms.Services.RestConection
         public async Task<List<SedeJJOO>> GetSedes()
         {
             List<SedeJJOO> toret;
-            String url = "http://172.26.80.77:8080/sedes/";
-            var uri = new Uri(url);
+            var uri = new Uri(sedesUrl);
 
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -61,8 +65,7 @@ namespace JJOOxamarinForms.Services.RestConection
         public async Task<List<List<String>>> GetCiudades()
         {
             List<List<String>> toret;
-            String url = "http://172.26.80.77:8080/paises/";
-            var uri = new Uri(url);
+            var uri = new Uri(ciudadesUrl);
 
             var response = await client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -78,7 +81,7 @@ namespace JJOOxamarinForms.Services.RestConection
 
         public async Task<Boolean> DeleteSede(int ano)
         {
-            String url = "http://172.26.80.77:8080/sedes/"+ ano + "/";
+            String url = sedesUrl + ano + "/";
             var uri = new Uri(url);
 
             HttpRequestMessage request = new HttpRequestMessage
@@ -98,7 +101,7 @@ namespace JJOOxamarinForms.Services.RestConection
 
         public async Task<Boolean> NewSede(int ano, int id_ciudad, int id_tipo)
         {
-            String url = "http://172.26.80.77:8080/sedes/" + ano + "/" + id_ciudad + "/" + id_tipo + "/";
+            String url = sedesUrl + ano + "/" + id_ciudad + "/" + id_tipo + "/";
             var uri = new Uri(url);
 
             HttpRequestMessage request = new HttpRequestMessage
@@ -118,7 +121,8 @@ namespace JJOOxamarinForms.Services.RestConection
 
         public async Task<Boolean> ModifySede(int anoViejo, int anoNuevo, int id_tipo)
         {
-            String url = "http://172.26.80.77:8080/sedes/" + anoViejo + "/" + anoNuevo + "/" + id_tipo + "/";
+            String url = sedesUrl + anoViejo + "/" + anoNuevo + "/" + id_tipo + "/";
+            Debug.WriteLine(url);
             var uri = new Uri(url);
 
             HttpRequestMessage request = new HttpRequestMessage

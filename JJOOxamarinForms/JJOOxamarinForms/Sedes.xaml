@@ -26,8 +26,9 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button x:Name="BtNew" Text="Nueva Sede" />
-                <Label x:Name="Try" />
+                <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                    <Button x:Name="BtNew" Text="Nueva Sede" />
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

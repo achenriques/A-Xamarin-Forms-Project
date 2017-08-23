@@ -4,10 +4,10 @@
              x:Class="JJOOxamarinForms.NewSede">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="HeaderNew" Text="Crear nueva Sede" BackgroundColor="Green" FontSize="Medium" />
+            <Label x:Name="HeaderNew" Text="Crear nueva Sede" BackgroundColor="#2196F3" FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"/>
             <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                 <Label Text="Año: " />
-                <Entry x:Name="Ano" Placeholder="Introduzca un año entre 0 y 2500" />
+                <Entry x:Name="Ano" Placeholder="Introduzca un año entre 0 y 2500" Keyboard="Numeric"/>
                 <Label Text="" />
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
@@ -19,9 +19,9 @@
                 <Label Text="Selecciona una época: " />
                 <Picker x:Name="Epocas" Title="Selecciona epoca"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                <Button x:Name="BtNuevo" Text="Crear" Clicked="OnButtonNew"/>
-                <Button x:Name="BtCancela" Text="Cancelar" Clicked="OnButtonCanceled"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                <Button x:Name="BtNuevo" Text="Crear" Clicked="OnButtonNew" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="BtCancela" Text="Cancelar" Clicked="OnButtonCanceled" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
